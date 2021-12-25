@@ -6,7 +6,7 @@ param (
 )
 
 if (-not $Path) {
-    $Path = switch ((Join-Path "." "soapui.bat"), (Join-Path "." (Join-Path "bin" "soapui")), (Get-Command -CommandType Application "soapui" -ErrorAction Stop).Source) {
+    $Path = switch ((Join-Path "." "soapui.bat"), (Join-Path "." (Join-Path "bin" "soapui.bat")), (Get-Command -CommandType Application "soapui" -ErrorAction Stop).Source) {
         { Test-Path -PathType Leaf $_ } {
             Resolve-Path $_
             break
@@ -14,7 +14,7 @@ if (-not $Path) {
     }
 }
 elseif (Test-Path -PathType Container $Path) {
-    $Path = switch ((Join-Path $Path "soapui.bat"), (Join-Path $Path (Join-Path "bin" "soapui"))) {
+    $Path = switch ((Join-Path $Path "soapui.bat"), (Join-Path $Path (Join-Path "bin" "soapui.bat"))) {
         { Test-Path -PathType Leaf $_ } {
             Resolve-Path $_
             break
