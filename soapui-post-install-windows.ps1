@@ -38,7 +38,7 @@ $SoapUiBatContents = switch ($SoapUiBatContents) {
         continue
     }
     "`"%JAVA%`" %JAVA_OPTS% -cp `"%CLASSPATH%`" com.eviware.soapui.SoapUI %*" {
-        $_ -replace "`"%JAVA%`" ", "start `"SoapUI-5.6.0`" `"%JAVA%`"w "
+        $_ -replace "`"%JAVA%`" ", "start `"SoapUI-5.6.1`" `"%JAVA%`"w "
         continue
     }
     { $_ -like "*-splash:SoapUI-Spashscreen.png*" } {
