@@ -2,6 +2,7 @@
 param (
     [Alias("PSPath")]
     [Alias("LiteralPath")]
+    [Parameter(Position = 0)]
     [string]$Path
 )
 
