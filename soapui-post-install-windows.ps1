@@ -22,6 +22,7 @@ elseif (Test-Path -PathType Container $Path) {
     }
 }
 
+[System.IO.FileInfo]$SoapUiBatFileInfo = Get-Item $Path -ErrorAction Stop
 [string[]]$SoapUiBatContents = Get-Content $Path -ErrorAction Stop
 $SoapUiBatContents = switch ($SoapUiBatContents) {
     "`"%JAVA%`" -cp `"%CLASSPATH%`" com.eviware.soapui.tools.JfxrtLocator > %TEMP%\jfxrtpath" {
@@ -38,7 +39,7 @@ $SoapUiBatContents = switch ($SoapUiBatContents) {
         continue
     }
     "`"%JAVA%`" %JAVA_OPTS% -cp `"%CLASSPATH%`" com.eviware.soapui.SoapUI %*" {
-        $_ -replace "`"%JAVA%`" ", "start `"SoapUI-5.6.1`" `"%JAVA%`"w "
+        $_ -replace "`"%JAVA%`" ", "start `"$($SoapUiBatFileInfo.Directory.Parent.BaseName)`" `"%JAVA%`"w "
         continue
     }
     { $_ -like "*-splash:SoapUI-Spashscreen.png*" } {
